@@ -10,10 +10,15 @@ public class TicTacToeServiceImpl implements TicTacToeService{
 
     public void StartTicTacToeGame(TicTacToePlayer dtoPlayer) {
         TicTacToeField field = new TicTacToeField(dtoPlayer);
+        field.startGame();
         System.out.println("StartTicTacToeGame reached");
     }
 
-    public TicTacToePlayer CreateTicTacToePlayer() {
-        return new TicTacToePlayer(false);
+    public TicTacToePlayer CreateTicTacToePlayer(boolean is_circle) {
+        return new TicTacToePlayer(is_circle);
+    }
+
+    public TicTacToeField CreateTicTacToeField(TicTacToePlayer dtoPlayer) {
+        return new TicTacToeField(dtoPlayer);
     }
 }

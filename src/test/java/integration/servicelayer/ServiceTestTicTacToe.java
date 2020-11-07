@@ -1,5 +1,6 @@
 package integration.servicelayer;
 
+import dto.TicTacToeField;
 import dto.TicTacToePlayer;
 import org.junit.Before;
 import org.junit.jupiter.api.*;
@@ -24,21 +25,37 @@ public class ServiceTestTicTacToe {
     public void mustCreateTicTacToePlayer()
     {
         //arrange
-        TicTacToePlayer ticTacToePlayer = svc.CreateTicTacToePlayer();
+        TicTacToePlayer ticTacToePlayer = svc.CreateTicTacToePlayer(true);
         //act
 
         //assert
         Assertions.assertNotNull(ticTacToePlayer);
     }
+
+    @Test
+    public void mustCreateTicTocToeField()
+    {
+        //arrange
+        TicTacToeField ticTacToeField = svc.CreateTicTacToeField(svc.CreateTicTacToePlayer(false));
+        //act
+
+        //asert
+        Assertions.assertNotNull(ticTacToeField);
+    }
+
     @Test
     public void mustCreateMocks()
     {
         //arrange
         TicTacToeService mock = mock(TicTacToeService.class);
+        TicTacToePlayer mock1 = mock(TicTacToePlayer.class);
+        TicTacToeField mock2 = mock(TicTacToeField.class);
         //act
 
         //assert
         verify(mock);
+        verify(mock1);
+        verify(mock2);
     }
 
     @Test
@@ -46,11 +63,11 @@ public class ServiceTestTicTacToe {
     {
         //arrange
         TicTacToeService mock = mock(TicTacToeService.class);
-        TicTacToePlayer ticTacToePlayer = mock.CreateTicTacToePlayer();
+        TicTacToePlayer ticTacToePlayer = mock.CreateTicTacToePlayer(false);
         //act
         mock.StartTicTacToeGame(ticTacToePlayer);
         //asert
         verify(mock, times(1)).StartTicTacToeGame(ticTacToePlayer);
-        verify(mock, times(1)).CreateTicTacToePlayer();
+        verify(mock, times(1)).CreateTicTacToePlayer(false);
     }
 }

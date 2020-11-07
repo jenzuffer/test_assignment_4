@@ -9,7 +9,7 @@ import java.sql.SQLException;
 public class Main {
     public static void main(String[] args) throws SQLException {
         TicTacToeService srvcImpl = new TicTacToeServiceImpl();
-        TicTacToePlayer ticTacToePlayer = srvcImpl.CreateTicTacToePlayer();
+        TicTacToePlayer ticTacToePlayer = srvcImpl.CreateTicTacToePlayer(false);
         srvcImpl.StartTicTacToeGame(ticTacToePlayer);
 
     }
