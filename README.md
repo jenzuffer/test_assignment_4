@@ -21,11 +21,12 @@ Mockito powerups:
      Those methods *cannot* be stubbed/verified.
      Mocking methods declared on non-public parent classes is not supported."
      Her istedet for at give et forkert korrekte svar påpeger mockito at der er problemer i forhold til
-     hvad verify mock tester. Igennem mockitos fejl besked forstod jeg så at jeg havde brug times metoden
-     forkert i mockito. Denne tjekker om en hvis metode er bleven kørt at hvis antal gange og er bleven
+     hvad verify mock tester. Igennem mockitos fejl besked forstod jeg så at jeg havde brugt times metoden
+     forkert i mockito. Denne tjekker om en hvis metode er bleven kørt et hvis antal gange og er bleven
      korregeret og flyttet over i sin egen test kaldet mustInteractWithMocks(). Igennem Times metoden kan 
      der testes igennem mockito hvor ofte mocken har interageret med at stykke kode. Dette kam dermed
-     tested om mockito interagerer korrekte.
+     tested om mockito interagerer korrekte. jeg troede først i en længere periode at det indikere hvor 
+     ofte den ville køre en metode f. eks. 
      
      * How do you specify how many times a mock should be called?
       * times nævner ikke hvor ofte den skal køre men tjekker istedet hvor ofte den egentlig har kørt. 
