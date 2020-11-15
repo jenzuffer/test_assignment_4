@@ -60,6 +60,47 @@ public class TicTacToeField {
 
     private class buttonListener implements ActionListener {
 
+        public void checkIfWon(String msg)
+        {
+            for (int iterator = 1; iterator < Fields.length - 1; iterator++)
+            {
+                String textleft = Fields[iterator - 1].getText();
+                String textright = Fields[iterator + 1].getText();
+                String textcurrent = Fields[iterator].getText();
+                if (textcurrent.isEmpty())
+                {
+                    continue;
+                }
+                if (textleft.equals(textcurrent) && textleft.equals(textright))
+                {
+                    System.out.println(msg);
+                    System.exit(0);
+                }
+                if (iterator > 2 && iterator < 6)
+                {
+                    String textabove = Fields[iterator - 3].getText();
+                    String textbelow = Fields[iterator + 3].getText();
+                    if (textabove.equals(textcurrent) && textabove.equals(textbelow))
+                    {
+                        System.out.println(msg);
+                        System.exit(0);
+                    }
+                    if (iterator == 4)
+                    {
+                        if (textcurrent.equals(Fields[0]) && textcurrent.equals(Fields[9]))
+                        {
+                            System.out.println(msg);
+                            System.exit(0);
+                        } else if (textcurrent.equals(Fields[2]) && textcurrent.equals(Fields[6])){
+                            System.out.println(msg);
+                            System.exit(0);
+                        }
+                    }
+
+                }
+            }
+        }
+
         public void actionPerformed(java.awt.event.ActionEvent actionEvent) {
             JButton buttonClicked = (JButton)actionEvent.getSource();
             String marked = "O";
@@ -70,15 +111,7 @@ public class TicTacToeField {
             String text0 = Fields[0].getText();
             String text1 = Fields[1].getText();
             String text2 = Fields[2].getText();
-            int iterator = 0;
-            for (JButton buttons : Fields){
-
-                if (!buttons.getText().isEmpty() && buttons.getText().equals(Fields[iterator - 1]))
-                {
-                    
-                }
-                iterator++;
-            }
+            checkIfWon("Human Player won!");
 
 
 
@@ -93,6 +126,7 @@ public class TicTacToeField {
                     break;
                 }
             }
+            checkIfWon("DTO Player won!");
 
 
 
