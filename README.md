@@ -29,7 +29,10 @@ Mockito powerups:
      ofte den ville køre en metode f. eks. 
      
      * How do you specify how many times a mock should be called?
-      * times nævner ikke hvor ofte den skal køre men tjekker istedet hvor ofte den egentlig har kørt. 
+      * times nævner ikke hvor ofte den skal køre men tjekker istedet hvor ofte den egentlig har kørt. (verify(class, times(2)).method();)
+
+     * How do you use a predicate to verify the properties of the arguments given to a call to the mock?
+      * 
       
       
      
