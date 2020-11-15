@@ -56,11 +56,13 @@ public class ServiceTestTicTacToe {
         TicTacToePlayer mock1 = mock(TicTacToePlayer.class);
         TicTacToeField mock2 = mock(TicTacToeField.class);
         //act
-
+        mock.getField();
+        mock1.is_circle();
+        mock2.startGame();
         //assert
-        verify(mock);
-        verify(mock1);
-        verify(mock2);
+        verify(mock).getField();
+        verify(mock1).is_circle();
+        verify(mock2).startGame();
     }
 
     @Test
@@ -68,11 +70,11 @@ public class ServiceTestTicTacToe {
     {
         //arrange
         TicTacToeService mock = mock(TicTacToeService.class);
-
+        TicTacToePlayer ticTacToePlayer = CreateTicTacToePlayer(false);
         //act
-        mock.StartTicTacToeGame(CreateTicTacToePlayer(false));
+        mock.StartTicTacToeGame(ticTacToePlayer);
         //asert
-        verify(mock, times(1)).StartTicTacToeGame(CreateTicTacToePlayer(false));
+        verify(mock, times(1)).StartTicTacToeGame(ticTacToePlayer);
     }
 
     @Test
