@@ -32,7 +32,12 @@ Mockito powerups:
       * times nævner ikke hvor ofte den skal køre men tjekker istedet hvor ofte den egentlig har kørt. (verify(class, times(2)).method();)
 
      * How do you use a predicate to verify the properties of the arguments given to a call to the mock?
-      * 
+      * Mockito har en klasse som hedder ArgumentMatchers som man kan bruge i sin verify statement til at finde ud af om de mocks man har lavet fører de forventede
+        property values videre (
+          TicTacToeField mock = mock(TicTacToeField.class);
+          mock.setHumanPlayerName("player");
+          verify(mock).setHumanPlayerName(argThat((String playerName) -> playerName.equals("player")));
+        )
       
       
      
