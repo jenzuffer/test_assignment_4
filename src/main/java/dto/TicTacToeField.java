@@ -1,7 +1,5 @@
 package dto;
 
-import javafx.event.ActionEvent;
-
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionListener;
