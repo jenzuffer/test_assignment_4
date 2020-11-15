@@ -16,16 +16,21 @@ import static org.mockito.Mockito.*;
 public class ServiceTestTicTacToe {
     private TicTacToeService svc;
 
+    public TicTacToePlayer CreateTicTacToePlayer(boolean is_circle) {
+        return new TicTacToePlayer(is_circle);
+    }
+
     @BeforeAll
     public void setup() {
-        svc = new TicTacToeServiceImpl();
+
+        svc = new TicTacToeServiceImpl(CreateTicTacToePlayer(false));
     }
 
     @Test
     public void mustCreateTicTacToePlayer()
     {
         //arrange
-        TicTacToePlayer ticTacToePlayer = svc.CreateTicTacToePlayer(true);
+        TicTacToePlayer ticTacToePlayer = CreateTicTacToePlayer(true);
         //act
 
         //assert
@@ -36,7 +41,7 @@ public class ServiceTestTicTacToe {
     public void mustCreateTicTocToeField()
     {
         //arrange
-        TicTacToeField ticTacToeField = svc.CreateTicTacToeField(svc.CreateTicTacToePlayer(false));
+        TicTacToeField ticTacToeField = svc.getField();
         //act
 
         //asert
@@ -63,11 +68,21 @@ public class ServiceTestTicTacToe {
     {
         //arrange
         TicTacToeService mock = mock(TicTacToeService.class);
-        TicTacToePlayer ticTacToePlayer = mock.CreateTicTacToePlayer(false);
+
         //act
-        mock.StartTicTacToeGame(ticTacToePlayer);
+        mock.StartTicTacToeGame(CreateTicTacToePlayer(false));
         //asert
-        verify(mock, times(1)).StartTicTacToeGame(ticTacToePlayer);
-        verify(mock, times(1)).CreateTicTacToePlayer(false);
+        verify(mock, times(1)).StartTicTacToeGame(CreateTicTacToePlayer(false));
+    }
+
+    @Test
+    public void mustTestGameInputs()
+    {
+        //arrange
+        //act
+        String gameWinner = svc.StartTicTacToeGame(CreateTicTacToePlayer(true));
+        //asert
+
+
     }
 }

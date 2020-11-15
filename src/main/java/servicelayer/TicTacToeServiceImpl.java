@@ -4,21 +4,23 @@ import dto.TicTacToeField;
 import dto.TicTacToePlayer;
 
 public class TicTacToeServiceImpl implements TicTacToeService{
+    private TicTacToeField field;
 
+    public TicTacToeServiceImpl(TicTacToePlayer dtoPlayer){
+        this.field = new TicTacToeField(dtoPlayer);
+    }
 
-    public TicTacToeServiceImpl(){ }
+    public TicTacToeField getField() {
+        return this.field;
+    }
 
-    public void StartTicTacToeGame(TicTacToePlayer dtoPlayer) {
-        TicTacToeField field = new TicTacToeField(dtoPlayer);
-        field.startGame();
+    public String StartTicTacToeGame(TicTacToePlayer dtoPlayer) {
         System.out.println("StartTicTacToeGame reached");
-    }
 
-    public TicTacToePlayer CreateTicTacToePlayer(boolean is_circle) {
-        return new TicTacToePlayer(is_circle);
-    }
+        String exampleName = "christian";
+        field.setHumanPlayerName(exampleName);
+        field.startGame();
 
-    public TicTacToeField CreateTicTacToeField(TicTacToePlayer dtoPlayer) {
-        return new TicTacToeField(dtoPlayer);
+        return "winner";
     }
 }
