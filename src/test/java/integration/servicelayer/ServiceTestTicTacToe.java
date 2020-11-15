@@ -85,4 +85,11 @@ public class ServiceTestTicTacToe {
 
 
     }
+
+    @Test
+    public void mustTestMockProperties() {
+        TicTacToeField mock = mock(TicTacToeField.class);
+        mock.setHumanPlayerName("player");
+        verify(mock).setHumanPlayerName(argThat((String aBar) -> aBar.equals("player")));
+    }
 }
