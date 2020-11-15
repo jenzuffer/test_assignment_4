@@ -92,6 +92,6 @@ public class ServiceTestTicTacToe {
     public void mustTestMockProperties() {
         TicTacToeField mock = mock(TicTacToeField.class);
         mock.setHumanPlayerName("player");
-        verify(mock).setHumanPlayerName(argThat((String aBar) -> aBar.equals("player")));
+        verify(mock).setHumanPlayerName(argThat((String playerName) -> playerName.equals("player")));
     }
 }
